@@ -23,14 +23,14 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         return doGetBean(name, args);
     }
 
-    protected <T> T doGetBean(final String name, final Object[] args) {
+    protected Object doGetBean(final String name, final Object[] args) {
         Object bean = getSingleton(name);
         if (bean != null) {
-            return (T) bean;
+            return bean;
         }
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
-        return (T) createBean(name, beanDefinition, args);
+        return createBean(name, beanDefinition, args);
     }
 
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;

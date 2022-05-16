@@ -25,6 +25,16 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new BeansException("Failed to instantiate [" + clazz.getName() + "]", e);
         }
+        // 就这里而言，不如如下实现
+//        try {
+//            if (null != ctor) {
+//                return ctor.newInstance(args);
+//            } else {
+//                return clazz.newInstance();
+//            }
+//        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+//            throw new BeansException("Failed to instantiate [" + clazz.getName() + "]", e);
+//        }
     }
 
 }

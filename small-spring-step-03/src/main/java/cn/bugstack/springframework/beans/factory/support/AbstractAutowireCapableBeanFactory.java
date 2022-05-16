@@ -30,11 +30,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return bean;
     }
 
+    @SuppressWarnings("rawtypes")
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
         Constructor constructorToUse = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
         Constructor<?>[] declaredConstructors = beanClass.getDeclaredConstructors();
-        for (Constructor ctor : declaredConstructors) {
+        for (Constructor ctor : declaredConstructors) {  // 这个地方根据args查找方法估计可以抽取出工具类，而且目前的实现过于简陋，理解个意思即可
             if (null != args && ctor.getParameterTypes().length == args.length) {
                 constructorToUse = ctor;
                 break;

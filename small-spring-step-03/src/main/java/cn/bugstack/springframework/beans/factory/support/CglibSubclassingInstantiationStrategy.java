@@ -7,6 +7,9 @@ import net.sf.cglib.proxy.NoOp;
 
 import java.lang.reflect.Constructor;
 
+/**
+ * 这里实际上是没有体现出使用cglib的必要性
+ */
 public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy {
 
     @Override
